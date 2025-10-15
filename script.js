@@ -1,23 +1,57 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
     let hand;
     let random = Math.random();
     if (random<0.3){
-        hand = "Rock"
+        hand = "rock";
     }
     else if(random<0.6){
-        hand = "Paper";
+        hand = "paper";
     }
     else{
-        hand = "Scissor";
+        hand = "scissor";
     }
 
     return hand;
 }
-
 // console.log(getComputerChoice());
+
 function getHumanChoice(){
     let choice= prompt("Rock, Paper or Scissor?");
     return choice;
 }
+// console.log(getHumanChoice())
 
-console.log(getHumanChoice())
+function playRound(humanChoice, computerChoice){
+    let humanChoice = humanChoice.toLowerCase()
+
+    if(humanChoice == computerChoice){
+        console.log("Tie")
+    }
+    else if(humanChoice == "rock" && computerChoice == "paper"){
+        console.log("You loose! Paper beats rock");
+        computerScore +=1;
+    }
+    else if(humanChoice == "rock" && computerChoice == "scissor"){
+        console.log("You win! rock beats paper")
+        humanScore += 1
+    }
+    else if(humanChoice == "scissor" && computerChoice == "paper"){
+        console.log("You win! scissor beats paper")
+        humanScore += 1
+    }
+    else if(humanChoice == "scissor" && computerChoice == "rock"){
+        console.log("You loose! rock beats scissor")
+        computerScore +=1;
+    }
+    else if(humanChoice == "paper" && computerChoice == "rock"){
+        console.log("You win! paper beats rock")
+        humanScore += 1
+    }
+    else if(humanChoice == "paper" && computerChoice == "scissor"){
+        console.log("You loose! scissor beats paper")
+        computerScore +=1;
+    }
+}
