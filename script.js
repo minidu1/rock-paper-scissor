@@ -25,7 +25,7 @@ function getHumanChoice(){
 // console.log(getHumanChoice())
 
 function playRound(humanChoice, computerChoice){
-    let humanChoice = humanChoice.toLowerCase()
+     humanChoice = humanChoice.toLowerCase()
 
     if(humanChoice == computerChoice){
         console.log("Tie")
@@ -55,3 +55,8 @@ function playRound(humanChoice, computerChoice){
         computerScore +=1;
     }
 }
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection)
