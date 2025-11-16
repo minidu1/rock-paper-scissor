@@ -69,5 +69,7 @@ function playGame() {
     console.log("computer score : " + computerScore)
 }
 
+const button =document.querySelectorAll(".btn")
+
 playGame()
 
