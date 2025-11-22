@@ -1,6 +1,7 @@
 let humanScore = 0;
 let computerScore = 0;
 
+
 function getComputerChoice() {
     let hand;
     let random = Math.random();
@@ -26,34 +27,36 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase()
+    let text = ""
 
     if (humanChoice == computerChoice) {
-        console.log("Tie")
+        text = "Tie"
     }
     else if (humanChoice == "rock" && computerChoice == "paper") {
-        console.log("You loose! Paper beats rock");
+        text = ("You lose! Paper beats rock");
         computerScore += 1;
     }
     else if (humanChoice == "rock" && computerChoice == "scissor") {
-        console.log("You win! rock beats paper")
+        text = ("You win! rock beats paper")
         humanScore += 1
     }
     else if (humanChoice == "scissor" && computerChoice == "paper") {
-        console.log("You win! scissor beats paper")
+        text = ("You win! scissor beats paper")
         humanScore += 1
     }
     else if (humanChoice == "scissor" && computerChoice == "rock") {
-        console.log("You loose! rock beats scissor")
+        text = ("You lose! rock beats scissor")
         computerScore += 1;
     }
     else if (humanChoice == "paper" && computerChoice == "rock") {
-        console.log("You win! paper beats rock")
+        text = ("You win! paper beats rock")
         humanScore += 1
     }
     else if (humanChoice == "paper" && computerChoice == "scissor") {
-        console.log("You loose! scissor beats paper")
+        text = ("You lose! scissor beats paper")
         computerScore += 1;
     }
+    return text;
 }
 
 
@@ -69,29 +72,59 @@ function playRound(humanChoice, computerChoice) {
 //     console.log("computer score : " + computerScore)
 // }
 
-const rock =document.querySelector("#rock");
-const paper =document.querySelector("#paper");
-const scissor =document.querySelector("#scissor");
+// const rock =document.querySelector("#rock");
+// const paper =document.querySelector("#paper");
+// const scissor =document.querySelector("#scissor");
 
-rock.addEventListener("click", event =>{
-    const humanSelection =  event.target.value;
-    const computerSelection = getComputerChoice();
+// rock.addEventListener("click", event =>{
+//     const humanSelection =  event.target.value;
+//     const computerSelection = getComputerChoice();
 
-    playRound(humanSelection, computerSelection)
+//     playRound(humanSelection, computerSelection)
+// })
+
+// paper.addEventListener("click", event =>{
+//     const humanSelection =  event.target.value;
+//     const computerSelection = getComputerChoice();
+
+//     playRound(humanSelection, computerSelection)
+// })
+
+// scissor.addEventListener("click", event =>{
+//     const humanSelection =  event.target.value;
+//     const computerSelection = getComputerChoice();
+
+//     playRound(humanSelection, computerSelection)
+// })
+
+const choice = document.querySelectorAll(".choice");
+console.log(choice);
+
+
+choice.forEach(button => {
+    button.addEventListener("click", event => {
+
+        console.log("Button detected:", button);
+        console.log("Button clicked:", event.target);
+
+
+
+        const humanSelection = event.target.value;
+        const computerSelection = getComputerChoice();
+
+        console.log("Human selected:", humanSelection);
+        console.log("Computer selected:", computerSelection);
+
+
+        const result = playRound(humanSelection, computerSelection)
+        div.textContent = result
+
+    })
 })
 
-paper.addEventListener("click", event =>{
-    const humanSelection =  event.target.value;
-    const computerSelection = getComputerChoice();
+const div = document.createElement("div");
 
-    playRound(humanSelection, computerSelection)
-})
 
-scissor.addEventListener("click", event =>{
-    const humanSelection =  event.target.value;
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection)
-})
+document.body.appendChild(div);
 
 
