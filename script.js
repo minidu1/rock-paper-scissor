@@ -57,6 +57,7 @@ function playRound(humanChoice, computerChoice) {
         computerScore += 1;
     }
     return text;
+    
 }
 
 
@@ -119,12 +120,16 @@ choice.forEach(button => {
         const result = playRound(humanSelection, computerSelection)
         div.textContent = result
 
+        document.querySelector("#human-score").textContent = humanScore;
+console.log(humanScore)
+document.querySelector("#computer-score").textContent = computerScore
+
     })
 })
 
 const div = document.createElement("div");
-
-
 document.body.appendChild(div);
 
-
+document.querySelector("#human-score").textContent = humanScore;
+console.log(humanScore)
+document.querySelector("#computer-score").textContent = computerScore
