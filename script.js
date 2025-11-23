@@ -57,7 +57,7 @@ function playRound(humanChoice, computerChoice) {
         computerScore += 1;
     }
     return text;
-    
+
 }
 
 
@@ -102,34 +102,40 @@ const choice = document.querySelectorAll(".choice");
 console.log(choice);
 
 
-choice.forEach(button => {
-    button.addEventListener("click", event => {
+    choice.forEach(button => {
+        button.addEventListener("click", event => {
 
-        console.log("Button detected:", button);
-        console.log("Button clicked:", event.target);
-
-
-
-        const humanSelection = event.target.value;
-        const computerSelection = getComputerChoice();
-
-        console.log("Human selected:", humanSelection);
-        console.log("Computer selected:", computerSelection);
+            console.log("Button detected:", button);
+            console.log("Button clicked:", event.target);
 
 
-        const result = playRound(humanSelection, computerSelection)
-        div.textContent = result
 
-        document.querySelector("#human-score").textContent = humanScore;
-console.log(humanScore)
-document.querySelector("#computer-score").textContent = computerScore
+            const humanSelection = event.target.value;
+            const computerSelection = getComputerChoice();
 
+            console.log("Human selected:", humanSelection);
+            console.log("Computer selected:", computerSelection);
+
+
+            const result = playRound(humanSelection, computerSelection)
+            div.textContent = result
+
+            document.querySelector("#human-score").textContent = humanScore;
+            document.querySelector("#computer-score").textContent = computerScore
+
+            checkWinner(); //check if someone got 5 marks
+        })
     })
-})
 
+function checkWinner(){
+    if (humanScore == 5){
+        div.textContent = "You win!"
+    }
+    else(
+        div.textContent ="You lose!"
+    )
+}
 const div = document.createElement("div");
 document.body.appendChild(div);
 
-document.querySelector("#human-score").textContent = humanScore;
-console.log(humanScore)
-document.querySelector("#computer-score").textContent = computerScore
+
