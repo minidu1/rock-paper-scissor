@@ -98,6 +98,9 @@ function playRound(humanChoice, computerChoice) {
 //     playRound(humanSelection, computerSelection)
 // })
 
+const div = document.createElement("div");
+document.body.appendChild(div);
+
 const choice = document.querySelectorAll(".choice");
 console.log(choice);
 
@@ -129,13 +132,36 @@ console.log(choice);
 
 function checkWinner(){
     if (humanScore == 5){
-        div.textContent = "You win!"
+        div.textContent = "You win!";
+        showResetButton();
+        disableButtons();
     }
-    else(
+    else if (computerScore == 5){
         div.textContent ="You lose!"
-    )
+         showResetButton();
+         disableButtons();
+    }
 }
-const div = document.createElement("div");
-document.body.appendChild(div);
 
+function showResetButton(){
+    const reset = document.createElement("button")
+    reset.textContent = "Play again"
+    document.body.appendChild(reset)
 
+    reset.addEventListener("click", ()=>{
+        computerScore = 0
+        humanScore = 0
+
+        document.querySelector("#human-score").textContent = humanScore;
+        document.querySelector("#computer-score").textContent = computerScore
+
+        div.textContent = ""
+        reset.remove()
+
+        choice.forEach(button=> button.disabled = false)
+    })
+}
+
+function disableButtons(){
+    choice.forEach(button=> button.disabled = true)
+}
